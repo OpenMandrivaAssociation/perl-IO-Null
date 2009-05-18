@@ -1,7 +1,7 @@
 
 %define realname   IO-Null
 %define version    1.01
-%define release    %mkrel 2
+%define release    %mkrel 3
 
 Name:       perl-%{realname}
 Version:    %{version}
