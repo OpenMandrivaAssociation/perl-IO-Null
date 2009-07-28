@@ -1,21 +1,18 @@
+%define upstream_name    IO-Null
+%define upstream_version 1.01
 
-%define realname   IO-Null
-%define version    1.01
-%define release    %mkrel 3
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
 
-Name:       perl-%{realname}
-Version:    %{version}
-Release:    %{release}
-License:    GPL or Artistic
+Summary:    class for null filehandles
+License:    GPL+ or Artistic
 Group:      Development/Perl
-Summary:    no summary found
-Source:     http://www.cpan.org/modules/by-module/IO/%{realname}-%{version}.tar.gz
-Url:        http://search.cpan.org/dist/%{realname}
-BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: perl-devel
-
+Url:        http://search.cpan.org/dist/%{upstream_name}
+Source0:    http://www.cpan.org/modules/by-module/IO/%{upstream_name}-%{upstream_version}.tar.gz
 
 BuildArch: noarch
+BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 This is a class for null filehandles.
@@ -27,7 +24,7 @@ Writing to any object of this class is always a no-operation, and returns
 true.
 
 %prep
-%setup -q -n %{realname}-%{version} 
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -48,5 +45,4 @@ rm -rf %buildroot
 %doc ChangeLog README
 %{_mandir}/man3/*
 %perl_vendorlib/*
-
 
